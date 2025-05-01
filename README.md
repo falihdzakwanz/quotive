@@ -4,7 +4,7 @@ Quotive adalah website sederhana yang menyajikan **Quote of the Day** dan memung
 
 ## 🔗 Live URL
 
-[https://yourdomain.com](https://yourdomain.com) ← (Ganti dengan URL sebenarnya jika sudah di-deploy)
+[https://quotive.vercel.app/](https://quotive.vercel.app/)
 
 ---
 
