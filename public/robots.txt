@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://your-domain.com
+Host: https://quotive.vercel.app
 
 # Sitemaps
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://quotive.vercel.app/sitemap.xml
