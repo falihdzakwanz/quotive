@@ -1,3 +1,5 @@
+export const revalidate = 3600;
+
 import QuoteCard from "@/components/Quote/Card";
 import { getTodayQuote } from "./utils/getTodayQuote";
 
