@@ -30,10 +30,10 @@ export default function QuoteCard({ quote, author }: QuoteCardProps) {
   return (
     <div className="border rounded-xl p-4 bg-accent shadow-md">
       {data ? (
-        <>
+        <div className="animate-slide-in">
           <p className="italic mb-2">&quot;{data.q}&quot;</p>
           <p className="text-right font-semibold">- {data.a}</p>
-        </>
+        </div>
       ) : isProcessing ? (
         <button
           className="flex items-center justify-center px-4 py-2 bg-[#FFB433] text-white rounded-md cursor-not-allowed"
@@ -64,7 +64,7 @@ export default function QuoteCard({ quote, author }: QuoteCardProps) {
       ) : (
         <button
           onClick={fetchRandomQuote}
-          className="px-4 py-2 bg-[#FFB433] text-white rounded-md hover:bg-[#FF9149] transition-colors duration-200 animate-bounce"
+          className="px-4 py-2 bg-[#FFB433] text-white rounded-md hover:bg-[#FF9149] transition-colors duration-200 animate-wiggle"
         >
           Get Random Quote
         </button>
