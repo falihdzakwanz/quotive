@@ -1,7 +1,7 @@
 export const revalidate = 3600;
 
 import QuoteCard from "@/components/Quote/Card";
-import { getTodayQuote } from "./utils/getTodayQuote";
+import { getTodayQuote } from "../utils/getTodayQuote";
 
 export default async function Home() {
   const todayQuote = await getTodayQuote();
