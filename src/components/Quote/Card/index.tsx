@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { RotateCw } from "lucide-react";
 
 type QuoteCardProps = {
   quote?: string;
@@ -8,7 +9,11 @@ type QuoteCardProps = {
   random?: boolean;
 };
 
-export default function QuoteCard({ quote, author }: QuoteCardProps) {
+export default function QuoteCard({
+  quote,
+  author,
+  random = false,
+}: QuoteCardProps) {
   const [data, setData] = useState<{ q: string; a: string } | null>(
     quote && author ? { q: quote, a: author } : null
   );
@@ -28,10 +33,22 @@ export default function QuoteCard({ quote, author }: QuoteCardProps) {
   }
 
   return (
-    <div className="border rounded-xl p-4 bg-accent shadow-md">
+    <div className="relative border rounded-xl p-4 bg-accent shadow-md">
       {data ? (
         <div className="animate-slide-in">
-          <p className="italic mb-2">&quot;{data.q}&quot;</p>
+          {random && (
+            <button
+              onClick={fetchRandomQuote}
+              disabled={isProcessing}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-50"
+              title="Refresh Quote"
+            >
+              <RotateCw
+                className={`w-5 h-5 ${isProcessing ? "animate-spin" : ""}`}
+              />
+            </button>
+          )}
+          <p className="italic mb-2 mt-3">&quot;{data.q}&quot;</p>
           <p className="text-right font-semibold">- {data.a}</p>
         </div>
       ) : isProcessing ? (
