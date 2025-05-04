@@ -3,6 +3,8 @@
 @theme {
   --color-primary: #80cbc4;
   --color-accent: #fbf8ef;
+  --color-light-orange: #FFB433;
+  --color-heavy-orange: #FF9149;
 
   @keyframes wiggle {
     0%, 100% {

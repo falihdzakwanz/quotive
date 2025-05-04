@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { RotateCw } from "lucide-react";
+import QuoteModal from "@/components/Quote/Modal";
 
-type QuoteCardProps = {
+export type QuoteCardProps = {
   quote?: string;
   author?: string;
   random?: boolean;
@@ -18,6 +19,7 @@ export default function QuoteCard({
     quote && author ? { q: quote, a: author } : null
   );
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   async function fetchRandomQuote() {
     setIsProcessing(true);
@@ -48,12 +50,29 @@ export default function QuoteCard({
               />
             </button>
           )}
-          <p className="italic mb-2 mt-3">&quot;{data.q}&quot;</p>
+
+          <p className="italic mb-2 mt-3 text-center">&quot;{data.q}&quot;</p>
           <p className="text-right font-semibold">- {data.a}</p>
+
+          <button
+            onClick={() => setShowModal(true)}
+            className="mt-3 text-sm text-light-orange hover:underline"
+          >
+            Download
+          </button>
+
+          {showModal && data && (
+            <QuoteModal
+              quote={data.q}
+              author={data.a}
+              onClose={() => setShowModal(false)}
+              isOpen={showModal}
+            />
+          )}
         </div>
       ) : isProcessing ? (
         <button
-          className="flex items-center justify-center px-4 py-2 bg-[#FFB433] text-white rounded-md cursor-not-allowed"
+          className="flex items-center justify-center px-4 py-2 bg-light-orange text-white rounded-md cursor-not-allowed"
           disabled
         >
           <svg
@@ -81,9 +100,10 @@ export default function QuoteCard({
       ) : (
         <button
           onClick={fetchRandomQuote}
-          className="px-4 py-2 bg-[#FFB433] text-white rounded-md hover:bg-[#FF9149] transition-colors duration-200 animate-wiggle"
+          className="relative overflow-hidden group px-4 py-2 bg-light-orange text-white rounded-md transition-colors duration-300 animate-wiggle"
         >
-          Get Random Quote
+          <span className="relative z-10">Get Random Quote</span>
+          <span className="absolute inset-0 bg-heavy-orange scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out z-0"></span>
         </button>
       )}
     </div>
