@@ -1,5 +1,6 @@
 "use client";
 
+import SocialMediaIcons from "@/components/SocialMediaIcons";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import html2canvas from "html2canvas";
 import { Download, X } from "lucide-react";
@@ -166,7 +167,7 @@ export default function QuoteModal({
 
           <button
             onClick={handleDownload}
-            className="mt-6 relative overflow-hidden group flex items-center justify-center gap-2 px-4 py-2 bg-light-orange text-white rounded-md w-full transition-colors duration-300"
+            className="mt-6 relative overflow-hidden group flex items-center justify-center gap-2 px-4 py-2 bg-light-orange text-white rounded-md w-full active:scale-95 transition-transform transition-colors duration-50"
           >
             <span className="relative z-10 flex items-center gap-2">
               <Download className="w-4 h-4" />
@@ -174,6 +175,8 @@ export default function QuoteModal({
             </span>
             <span className="absolute inset-0 bg-heavy-orange scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-600 ease-out z-0"></span>
           </button>
+
+          <SocialMediaIcons />
         </DialogPanel>
       </div>
     </Dialog>

@@ -36,21 +36,24 @@ export default function QuoteCard({
 
   return (
     <div className="relative border rounded-xl p-4 bg-accent shadow-md">
+      <button
+        onClick={fetchRandomQuote}
+        disabled={!random || isProcessing || !data}
+        className={`absolute top-2 right-2 transition-all duration-300
+      ${
+        random && data
+          ? "opacity-100 text-gray-500 hover:text-gray-700"
+          : "opacity-0 pointer-events-none hidden"
+      }
+      ${isProcessing ? "cursor-not-allowed" : ""}
+      disabled:opacity-50`}
+        title="Refresh Quote"
+      >
+        <RotateCw className={`w-5 h-5 ${isProcessing ? "animate-spin" : ""}`} />
+      </button>
+
       {data ? (
         <div className="animate-slide-in">
-          {random && (
-            <button
-              onClick={fetchRandomQuote}
-              disabled={isProcessing}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-50"
-              title="Refresh Quote"
-            >
-              <RotateCw
-                className={`w-5 h-5 ${isProcessing ? "animate-spin" : ""}`}
-              />
-            </button>
-          )}
-
           <p className="italic mb-2 mt-3 text-center">&quot;{data.q}&quot;</p>
           <p className="text-right font-semibold">- {data.a}</p>
 
